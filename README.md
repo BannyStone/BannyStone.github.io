@@ -11,7 +11,7 @@ Push to `main` and GitHub rebuilds the site automatically.
 
 ## Homepage photo
 Put a photo at `assets/img/hero.jpg` and set `hero_image: /assets/img/hero.jpg` in `_config.yml`.
-It appears beside your intro and fades out at the bottom.
+It appears to the left of your intro and fades out at the bottom.
 
 ## Local preview
 ```

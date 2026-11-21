@@ -18,7 +18,7 @@ layout: default
 </section>
 
 {% if site.posts.size > 0 %}
-<section class="recent">
+<section class="recent{% if has_image %} has-image{% endif %}">
   <h2 class="label">Recent writing</h2>
   <ul class="post-list">
   {% for post in site.posts limit:5 %}

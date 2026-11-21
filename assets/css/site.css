@@ -119,17 +119,19 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-si
 pre { padding: var(--space-sm) var(--space-md); border: 1px solid var(--rule); border-radius: 4px; overflow-x: auto; }
 hr { border: 0; border-top: 1px solid var(--rule); }
 
-/* Homepage masthead: text left, photo bleeding off the right edge */
+/* Homepage masthead: photo left, text right */
 .masthead { display: grid; grid-template-columns: minmax(0, var(--measure)); }
 .masthead.has-image {
-  grid-template-columns: minmax(0, var(--measure)) minmax(0, 1fr);
-  gap: var(--space-lg);
+  grid-template-columns: minmax(0, 1fr) minmax(0, var(--measure));
+  gap: var(--space-xl);
   align-items: center;
 }
 .masthead .body { margin-top: var(--space-md); color: var(--ink-soft); }
 .masthead .body a { color: var(--ink); }
+/* Photo on the left, bleeding off the left edge of the window */
 .hero {
-  margin-right: calc(-1 * ((100vw - min(var(--page-wide), 100vw)) / 2 + var(--page-pad)));
+  order: -1;
+  margin-left: calc(-1 * ((100vw - min(var(--page-wide), 100vw)) / 2 + var(--page-pad)));
 }
 .hero img {
   width: 100%;
@@ -142,10 +144,13 @@ hr { border: 0; border-top: 1px solid var(--rule); }
   .masthead.has-image h1 { order: 1; }
   .hero { order: 2; margin-inline: calc(-1 * var(--page-pad)); }
   .masthead.has-image .body { order: 3; margin-top: 0; }
+  .recent.has-image { margin-left: 0; }
 }
 
 /* Post lists */
 .recent { margin-top: var(--space-xl); max-width: var(--measure); }
+/* Line up with the text column when the photo is on the left */
+.recent.has-image { margin-left: auto; }
 .recent h2 { margin-bottom: var(--space-sm); }
 main > h1 + .post-list { margin-top: var(--space-md); }
 .post-list { list-style: none; padding: 0; max-width: var(--measure); }
