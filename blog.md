@@ -1,13 +1,16 @@
 ---
 layout: default
-title: Blog
+title: Writing
 permalink: /blog/
 ---
 
-# Blog
+<h1>Writing</h1>
 
 <ul class="post-list">
 {% for post in site.posts %}
-  <li><span class="meta">{{ post.date | date: '%Y-%m-%d' }}</span> <a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+  <li>
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <span class="label">{{ post.date | date: '%b %-d, %Y' }}</span>
+  </li>
 {% endfor %}
 </ul>

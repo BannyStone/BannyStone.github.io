@@ -1,0 +1,32 @@
+---
+layout: default
+---
+{% assign has_image = false %}
+{% if site.hero_image and site.hero_image != "" %}{% assign has_image = true %}{% endif %}
+<section class="masthead{% if has_image %} has-image{% endif %}">
+  <div class="words">
+    <h1>{{ page.tagline }}</h1>
+    <div class="prose body">
+      {{ content }}
+    </div>
+  </div>
+  {% if has_image %}
+  <figure class="hero">
+    <img src="{{ site.hero_image | relative_url }}" alt="{{ site.hero_alt }}">
+  </figure>
+  {% endif %}
+</section>
+
+{% if site.posts.size > 0 %}
+<section class="recent">
+  <h2 class="label">Recent writing</h2>
+  <ul class="post-list">
+  {% for post in site.posts limit:5 %}
+    <li>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <span class="label">{{ post.date | date: '%b %Y' }}</span>
+    </li>
+  {% endfor %}
+  </ul>
+</section>
+{% endif %}

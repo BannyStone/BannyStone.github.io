@@ -3,23 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300..700&display=swap">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
   {% seo %}
   {% feed_meta %}
 </head>
 <body>
-  <header class="site-header">
-    <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    <nav>
-      <a href="{{ '/' | relative_url }}">Home</a>
-      <a href="{{ '/blog/' | relative_url }}">Blog</a>
-    </nav>
-  </header>
-  <main>
-    {{ content }}
-  </main>
-  <footer class="site-footer">
-    © {{ 'now' | date: '%Y' }} {{ site.author }} · <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-  </footer>
+  <div class="page{% if page.wide %} page--wide{% endif %}">
+    <header class="site-header">
+      <a class="wordmark" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <nav>
+        {% for item in site.nav %}
+          {% assign href = item.url | relative_url %}
+          {% assign current = false %}
+          {% if page.url == item.url %}{% assign current = true %}{% endif %}
+          {% if item.url != '/' and page.url contains item.url %}{% assign current = true %}{% endif %}
+          {% if current %}
+            <a class="nav-link" href="{{ href }}" aria-current="page">{{ item.title }}</a>
+          {% else %}
+            <a class="nav-link" href="{{ href }}">{{ item.title }}</a>
+          {% endif %}
+        {% endfor %}
+      </nav>
+    </header>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <ul>
+        {% if site.email and site.email != "" %}<li><a href="mailto:{{ site.email }}">Email</a></li>{% endif %}
+        {% if site.github_username and site.github_username != "" %}<li><a href="https://github.com/{{ site.github_username }}">GitHub</a></li>{% endif %}
+        {% if site.linkedin and site.linkedin != "" %}<li><a href="{{ site.linkedin }}">LinkedIn</a></li>{% endif %}
+        {% if site.scholar and site.scholar != "" %}<li><a href="{{ site.scholar }}">Google Scholar</a></li>{% endif %}
+        <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
+      </ul>
+      <span class="label">© {{ 'now' | date: '%Y' }} {{ site.author }}</span>
+    </footer>
+  </div>
 </body>
 </html>

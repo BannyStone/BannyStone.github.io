@@ -1,22 +1,12 @@
 ---
-layout: default
-title: Home
+layout: home
+wide: true
+title: About
+tagline: One sentence about what you do.
 ---
 
-# Hi, I'm {{ site.author }} 👋
+Write a short paragraph about your current work: where you are, what you build or study, and one or two things you're proud of. Add [links](https://github.com/BannyStone) to projects inline, the way you'd mention them in conversation.
 
-Write a short introduction here: who you are, what you work on, and what you're interested in.
+A second paragraph about your background — where you studied, past roles, a notable result.
 
-<p class="links">
-{% if site.github_username %}<a href="https://github.com/{{ site.github_username }}">GitHub</a>{% endif %}
-{% if site.linkedin %}<a href="{{ site.linkedin }}">LinkedIn</a>{% endif %}
-{% if site.email %}<a href="mailto:{{ site.email }}">Email</a>{% endif %}
-</p>
-
-## Recent posts
-
-<ul class="post-list">
-{% for post in site.posts limit:5 %}
-  <li><span class="meta">{{ post.date | date: '%Y-%m-%d' }}</span> <a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-{% endfor %}
-</ul>
+A third, more personal paragraph: hobbies, side interests, anything that makes you you.

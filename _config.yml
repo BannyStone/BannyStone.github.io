@@ -8,6 +8,18 @@ baseurl: ""
 email: ""
 github_username: BannyStone
 linkedin: ""
+scholar: ""
+
+# Optional photo shown beside your intro on the homepage, e.g. /assets/img/hero.jpg
+hero_image: ""
+hero_alt: ""
+
+# Header navigation
+nav:
+  - title: About
+    url: /
+  - title: Writing
+    url: /blog/
 
 markdown: kramdown
 permalink: /blog/:year/:month/:title/
@@ -20,3 +32,6 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - vendor
+  - .bundle
+  - _local
